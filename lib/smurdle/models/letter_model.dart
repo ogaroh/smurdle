@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:equatable/equatable.dart';
-import 'package:smurdle/app/app_colors.dart';
+import '../../app/app_colors.dart';
 
 enum LetterStatus { initial, notInWord, inWord, correct}
 
