@@ -1,6 +1,6 @@
 import 'package:flip_card/flip_card.dart';
 import 'package:flutter/material.dart';
-import 'package:smurdle/smurdle/wordle.dart';
+import 'package:smurdle/smurdle/smurdle.dart';
 
 class Board extends StatelessWidget {
     

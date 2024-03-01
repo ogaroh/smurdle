@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:smurdle/smurdle/wordle.dart';
+import 'package:smurdle/smurdle/smurdle.dart';
 
 class App extends StatelessWidget {
     const App({Key? key}) : super(key: key);
@@ -8,10 +8,10 @@ class App extends StatelessWidget {
     @override
     Widget build(BuildContext context) {
         return MaterialApp(
-            title: 'Flutter Wordle App',
+            title: 'S',
             debugShowCheckedModeBanner: false,
             theme: ThemeData.dark().copyWith(scaffoldBackgroundColor: Colors.black),
-            home: const WordleScreen(),
+            home: const SmurdleScreen(),
         );
     }
 }

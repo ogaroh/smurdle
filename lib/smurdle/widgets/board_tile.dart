@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:smurdle/smurdle/wordle.dart';
+import 'package:smurdle/smurdle/smurdle.dart';
 
 
 class BoardTile extends StatelessWidget {

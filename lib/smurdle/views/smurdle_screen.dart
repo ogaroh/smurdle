@@ -1,22 +1,24 @@
+// ignore_for_file: library_private_types_in_public_api
+
 import 'dart:math';
 
 import 'package:flip_card/flip_card.dart';
 import 'package:flutter/material.dart';
 import 'package:smurdle/app/app_colors.dart';
-import 'package:smurdle/smurdle/wordle.dart';
+import 'package:smurdle/smurdle/smurdle.dart';
 
 enum GameStatus { playing, submitting, lost, won}
 
-class WordleScreen extends StatefulWidget {
-    const WordleScreen({
+class SmurdleScreen extends StatefulWidget {
+    const SmurdleScreen({
         Key? key
     }) : super(key: key);
 
     @override
-    _WordleScreenState createState() => _WordleScreenState();
+    _SmurdleScreenState createState() => _SmurdleScreenState();
 }
 
-class _WordleScreenState extends State<WordleScreen> {
+class _SmurdleScreenState extends State<SmurdleScreen> {
     GameStatus _gameStatus = GameStatus.playing;
 
     final List<Word> _board = List.generate(
@@ -52,7 +54,7 @@ class _WordleScreenState extends State<WordleScreen> {
                 backgroundColor: Colors.transparent,
                 elevation: 0,
                 title: const Text(
-                    'WORDLE',
+                    'SMURDLE',
                     style: TextStyle(
                         fontSize: 36,
                         fontWeight: FontWeight.bold,
