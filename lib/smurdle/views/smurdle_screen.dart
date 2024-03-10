@@ -13,7 +13,6 @@ enum GameStatus { playing, submitting, lost, won }
 class SmurdleScreen extends StatefulWidget {
   const SmurdleScreen({Key? key}) : super(key: key);
 
-
   @override
   _SmurdleScreenState createState() => _SmurdleScreenState();
 }
@@ -43,11 +42,8 @@ class _SmurdleScreenState extends State<SmurdleScreen> {
 
     setState(() {
       words = w;
-      final selectedWord = words[Random().nextInt(words.length)].toUpperCase();
-      _solution = Word.fromString(selectedWord);
-
-      log(selectedWord);
     });
+    _restart();
   }
 
   @override
@@ -139,8 +135,8 @@ class _SmurdleScreenState extends State<SmurdleScreen> {
   }
 
   void _checkIfWinOrLoss() {
-    log("Current: ${_currentWord!.wordString}");
-    log("Solution: ${_solution.wordString}");
+    log("Current: ${_currentWord!.wordString} (${_currentWord!.wordString.length})");
+    log("Solution: ${_solution.wordString} (${_solution.wordString.length})");
 
     log((_currentWord!.wordString == _solution.wordString).toString());
     if (_currentWord!.wordString == _solution.wordString) {
@@ -186,7 +182,7 @@ class _SmurdleScreenState extends State<SmurdleScreen> {
               6, (_) => Word(letters: List.generate(5, (_) => Letter.empty()))),
         );
       _solution = Word.fromString(
-        words[Random().nextInt(words.length)].toUpperCase(),
+        words[Random().nextInt(words.length - 1)].toUpperCase().trim(),
       );
       _keyboardLetters.clear();
       _flipCardKeys
