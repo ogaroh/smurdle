@@ -1,6 +1,7 @@
 // ignore_for_file: library_private_types_in_public_api
 
-import 'dart:math';
+import 'dart:developer';
+import 'dart:math' show Random;
 
 import 'package:flip_card/flip_card.dart';
 import 'package:flutter/material.dart';
@@ -10,9 +11,8 @@ import 'package:smurdle/smurdle/smurdle.dart';
 enum GameStatus { playing, submitting, lost, won }
 
 class SmurdleScreen extends StatefulWidget {
-  const SmurdleScreen({Key? key, required this.validWords}) : super(key: key);
+  const SmurdleScreen({Key? key}) : super(key: key);
 
-  final List<String> validWords;
 
   @override
   _SmurdleScreenState createState() => _SmurdleScreenState();
@@ -32,13 +32,29 @@ class _SmurdleScreenState extends State<SmurdleScreen> {
   Word? get _currentWord =>
       _currentWordIndex < _board.length ? _board[_currentWordIndex] : null;
 
-  Word _solution = Word.fromString(
-    kHardcodedfiveLetterWords[
-            Random().nextInt(kHardcodedfiveLetterWords.length)]
-        .toUpperCase(),
-  );
+  late Word _solution;
+  late List<String> words;
 
   final Set<Letter> _keyboardLetters = {};
+
+  // start game
+  start() async {
+    final List<String> w = await Dictionary().readWords();
+
+    setState(() {
+      words = w;
+      final selectedWord = words[Random().nextInt(words.length)].toUpperCase();
+      _solution = Word.fromString(selectedWord);
+
+      log(selectedWord);
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    start();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -123,6 +139,10 @@ class _SmurdleScreenState extends State<SmurdleScreen> {
   }
 
   void _checkIfWinOrLoss() {
+    log("Current: ${_currentWord!.wordString}");
+    log("Solution: ${_solution.wordString}");
+
+    log((_currentWord!.wordString == _solution.wordString).toString());
     if (_currentWord!.wordString == _solution.wordString) {
       _gameStatus = GameStatus.won;
       ScaffoldMessenger.of(context).showSnackBar(
@@ -166,9 +186,7 @@ class _SmurdleScreenState extends State<SmurdleScreen> {
               6, (_) => Word(letters: List.generate(5, (_) => Letter.empty()))),
         );
       _solution = Word.fromString(
-        kHardcodedfiveLetterWords[
-                Random().nextInt(kHardcodedfiveLetterWords.length)]
-            .toUpperCase(),
+        words[Random().nextInt(words.length)].toUpperCase(),
       );
       _keyboardLetters.clear();
       _flipCardKeys
