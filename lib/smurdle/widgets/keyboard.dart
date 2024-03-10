@@ -4,7 +4,7 @@ import '../smurdle.dart';
 const _qwerty = [
     ['Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P'],
     ['A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L'],
-    ['ENTER', 'Z', 'X', 'C', 'V', 'B', 'N', 'M', 'DEL']
+    ['DEL', 'Z', 'X', 'C', 'V', 'B', 'N', 'M', 'ENTER']
 ];
 
 class Keyboard extends StatelessWidget {
@@ -74,7 +74,7 @@ class _KeyBoardButton extends StatelessWidget {
         _KeyBoardButton(
             width: 56,
             onTap: onTap,
-            backgroundColor: Colors.grey,
+            backgroundColor: Colors.red.shade900,
             letter: 'DEL'
         );
 
@@ -84,7 +84,7 @@ class _KeyBoardButton extends StatelessWidget {
         _KeyBoardButton(
             width: 56,
             onTap: onTap,
-            backgroundColor: Colors.grey,
+            backgroundColor: Colors.blue.shade800,
             letter: 'ENTER'
         );
 

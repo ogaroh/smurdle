@@ -1,6 +1,5 @@
 // ignore_for_file: library_private_types_in_public_api
 
-import 'dart:developer';
 import 'dart:math' show Random;
 
 import 'package:flip_card/flip_card.dart';
@@ -56,14 +55,18 @@ class _SmurdleScreenState extends State<SmurdleScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-            centerTitle: true,
-            backgroundColor: Colors.transparent,
-            elevation: 0,
-            title: const Text(
-              'SMURDLE',
-              style: TextStyle(
-                  fontSize: 36, fontWeight: FontWeight.bold, letterSpacing: 4),
-            )),
+          centerTitle: true,
+          backgroundColor: Colors.transparent,
+          elevation: 0,
+          title: const Text(
+            'SMURDLE',
+            style: TextStyle(
+              fontSize: 36,
+              fontWeight: FontWeight.bold,
+              letterSpacing: 4,
+            ),
+          ),
+        ),
         body: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -135,10 +138,6 @@ class _SmurdleScreenState extends State<SmurdleScreen> {
   }
 
   void _checkIfWinOrLoss() {
-    log("Current: ${_currentWord!.wordString} (${_currentWord!.wordString.length})");
-    log("Solution: ${_solution.wordString} (${_solution.wordString.length})");
-
-    log((_currentWord!.wordString == _solution.wordString).toString());
     if (_currentWord!.wordString == _solution.wordString) {
       _gameStatus = GameStatus.won;
       ScaffoldMessenger.of(context).showSnackBar(
