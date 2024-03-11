@@ -1,9 +1,9 @@
 name: smurdle
-description: A new Flutter project.
+description: Smurdle is a simple yet addictive word puzzle game. In Smurdle, players have six chances to guess a five-letter word. After each guess, the game provides feedback by indicating which letters in the guessed word are correct and in the right position (marked with green), which letters are correct but in the wrong position (marked with yellow), and which letters are not in the word at all (marked with gray). The goal is to deduce the secret word using these clues within the given number of attempts. It's a fun and challenging game that exercises your vocabulary and deductive reasoning skills.
 
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
-publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+publish_to: "none" # Remove this line if you wish to publish to pub.dev
 
 # The following defines the version and build number for your application.
 # A version number is three numbers separated by dots, like 1.2.43
@@ -32,7 +32,6 @@ dependencies:
   flutter:
     sdk: flutter
 
-
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
@@ -53,7 +52,6 @@ dev_dependencies:
 
 # The following section is specific to Flutter packages.
 flutter:
-
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.
