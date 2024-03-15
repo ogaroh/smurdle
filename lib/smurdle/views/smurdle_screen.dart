@@ -1,9 +1,11 @@
 // ignore_for_file: library_private_types_in_public_api
 
+import 'dart:developer';
 import 'dart:math' show Random;
 
 import 'package:flip_card/flip_card.dart';
 import 'package:flutter/material.dart';
+import 'package:games_services/games_services.dart';
 import 'package:smurdle/app/app_colors.dart';
 import 'package:smurdle/smurdle/smurdle.dart';
 
@@ -66,6 +68,25 @@ class _SmurdleScreenState extends State<SmurdleScreen> {
               letterSpacing: 4,
             ),
           ),
+          actions: [
+            IconButton(
+              onPressed: () async {
+                try {
+                  await Leaderboards.showLeaderboards(
+                    androidLeaderboardID: 'CgkI6ZGUzYsREAIQAQ',
+                    // TODO: add iOS leaderboard
+                    // iOSLeaderboardID: 'ios_leaderboard_id',
+                  );
+                } catch (e) {
+                  debugPrint(e.toString());
+                }
+              },
+              icon: const Icon(
+                Icons.leaderboard,
+                color: Colors.amber,
+              ),
+            )
+          ],
         ),
         body: Column(
           mainAxisAlignment: MainAxisAlignment.center,
